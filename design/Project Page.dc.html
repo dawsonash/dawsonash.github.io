@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F4F3EF; }
+  ::selection { background: #111110; color: #F4F3EF; }
+  @keyframes blink { 0%, 70% { opacity: 1; } 85%, 100% { opacity: 0.25; } }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="--ac: {{ accent }}; font-family: 'Space Grotesk', sans-serif; color: #111110; background: #F4F3EF; min-height: 100vh; position: relative; overflow-x: hidden;">
+
+  <!-- ===================== HERO IMAGE + NAV ===================== -->
+  <section data-screen-label="Project Hero" style="position: relative; height: clamp(560px, 90vh, 880px); overflow: hidden; background: #111110;">
+    <image-slot id="proj-cover" shape="rect" fit="cover" src="https://images.unsplash.com/photo-1522199755839-a2bacb67c546?w=1600&q=80" placeholder="Drop project cover"></image-slot>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(17,17,16,0.45) 0%, rgba(17,17,16,0) 26%, rgba(17,17,16,0) 52%, rgba(17,17,16,0.62) 100%); pointer-events: none;"></div>
+
+    <!-- centered nav overlaid on hero -->
+    <nav style="position: absolute; top: 28px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 32px; font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(17,17,16,0.32); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); padding: 11px 26px; border-radius: 999px; box-shadow: 0 4px 24px rgba(17,17,16,0.18);">
+      <a href="Dawson Ash - Landing.dc.html#about" style="color: rgba(255,255,255,0.75); text-decoration: none; padding-top: 4px; padding-bottom: 3px; border-bottom: 1px solid transparent;" style-hover="color: #ffffff;">About</a><a href="Dawson Ash - Landing.dc.html#work" style="color: #ffffff; text-decoration: none; padding-top: 4px; padding-bottom: 3px; border-bottom: 1px solid transparent;" style-hover="border-bottom-color: var(--ac, #1F4DFF);">Work</a>
+      <a href="Dawson Ash - Landing.dc.html#contact" style="color: rgba(255,255,255,0.75); text-decoration: none; padding-top: 4px; padding-bottom: 3px; border-bottom: 1px solid transparent;" style-hover="color: #ffffff;">CONTACT</a>
+    </nav>
+
+    <!-- case label -->
+    <div style="position: absolute; top: 88px; left: 40px; z-index: 10; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: rgba(244,243,239,0.8); text-transform: uppercase;">Case {{ caseNo }} — {{ year }}</div>
+
+    <!-- title -->
+    <div style="position: absolute; left: 40px; right: 40px; bottom: 48px; z-index: 10;">
+      <h1 style="margin: 0; font-size: clamp(48px, 9vw, 124px); font-weight: 600; line-height: 0.9; letter-spacing: -0.045em; color: #F4F3EF; max-width: 13ch;">{{ title }}</h1>
+      <p style="margin: 24px 0 0; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; font-weight: 400; color: rgba(244,243,239,0.85); max-width: 560px;">One-line framing of the problem — what was broken, and why it mattered enough to rebuild.</p>
+    </div>
+  </section>
+
+  <!-- ===================== META ===================== -->
+  <section data-screen-label="Meta" style="max-width: 1180px; margin: 0 auto; padding: 40px 40px 0;">
+    <div style="display: flex; flex-wrap: wrap; gap: 64px; border-top: 1px solid #E2E1DB; border-bottom: 1px solid #E2E1DB; padding: 28px 0;">
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 7px;">Role</div>
+        <div style="font-size: 15px; font-weight: 500;">Lead front-end</div>
+      </div>
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 7px;">Year</div>
+        <div style="font-size: 15px; font-weight: 500;">{{ year }}</div>
+      </div>
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 7px;">Stack</div>
+        <div style="font-size: 15px; font-weight: 500;">React · WebGL · Rust</div>
+      </div>
+      <a href="#" style="margin-left: auto; align-self: center; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ac, #1F4DFF); text-decoration: none;" style-hover="opacity: 0.7;">Live site ↗</a>
+    </div>
+  </section>
+
+  <!-- ===================== BODY SECTION 01 ===================== -->
+  <section data-screen-label="Section 01" style="max-width: 1180px; margin: 0 auto; padding: 88px 40px 0;">
+    <div style="display: grid; grid-template-columns: 180px 1fr; gap: 56px; align-items: start;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; padding-top: 8px;">01 — Problem</div>
+      <div style="max-width: 620px;">
+        <p style="margin: 0 0 16px; font-size: 19px; line-height: 1.65; color: #2A2A26;">Two or three sentences explaining the problem in depth. The old approach, where it broke down, and the symptoms users felt.</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.65; color: #2A2A26;">A second paragraph if needed — keep paragraphs short and the column narrow for readability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SUPPORTING IMAGE ===================== -->
+  <section data-screen-label="Image" style="max-width: 1180px; margin: 0 auto; padding: 64px 40px 0;">
+    <div style="position: relative; height: clamp(360px, 52vh, 540px); overflow: hidden; background: #E2E1DB;">
+      <image-slot id="proj-shot-1" shape="rect" fit="cover" placeholder="Drop a wide product shot"></image-slot>
+    </div>
+  </section>
+
+  <!-- ===================== BODY SECTION 02 ===================== -->
+  <section data-screen-label="Section 02" style="max-width: 1180px; margin: 0 auto; padding: 88px 40px 0;">
+    <div style="display: grid; grid-template-columns: 180px 1fr; gap: 56px; align-items: start;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; padding-top: 8px;">02 — Approach</div>
+      <div style="max-width: 620px;">
+        <p style="margin: 0 0 16px; font-size: 19px; line-height: 1.65; color: #2A2A26;">Explain the key decision and why it was right. Reference the constraint it answered, and the tradeoff you accepted to get there.</p>
+        <p style="margin: 0; font-size: 19px; line-height: 1.65; color: #2A2A26;">Keep it to the decisions that mattered — the reader can infer the rest.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== OUTCOME ===================== -->
+  <section data-screen-label="Outcome" style="max-width: 1180px; margin: 0 auto; padding: 88px 40px 0;">
+    <div style="display: grid; grid-template-columns: 180px 1fr; gap: 56px; align-items: start;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; padding-top: 12px;">03 — Outcome</div>
+      <p style="margin: 0; font-size: clamp(26px, 3.6vw, 42px); font-weight: 600; letter-spacing: -0.025em; line-height: 1.12; max-width: 760px;">The single sentence that captures the result — the number, the feeling, the shipped reality.</p>
+    </div>
+  </section>
+
+  <!-- ===================== NEXT PROJECT ===================== -->
+  <a href="#" data-screen-label="Next" style="display: flex; align-items: center; justify-content: space-between; max-width: 1180px; margin: 0 auto; padding: 40px; text-decoration: none; color: #111110; border-bottom: 1px solid #111110;" style-hover="color: var(--ac, #1F4DFF);">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #6F6F68;">Next project</span>
+    <span style="font-size: clamp(30px, 5vw, 64px); font-weight: 700; letter-spacing: -0.03em;">Orbit Mail ↗</span>
+  </a>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="max-width: 1180px; margin: 0 auto; padding: 40px;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: #6F6F68; text-transform: uppercase;">
+      <a href="mailto:hi@dawsonash.com" style="color: #111110; text-decoration: none;" style-hover="color: var(--ac, #1F4DFF);">hi@dawsonash.com ↗</a>
+      <span>2026 Dawson Ash</span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:2800},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FF4D17&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;,&quot;options&quot;:[&quot;#1F4DFF&quot;,&quot;#FF4D17&quot;,&quot;#00B86B&quot;,&quot;#7C3AED&quot;]},&quot;title&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Atlas Canvas&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project&quot;},&quot;year&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;2025&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project&quot;},&quot;caseNo&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;01&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Project&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() { this._sizeSlots(); }
+  componentDidUpdate() { this._sizeSlots(); }
+
+  _sizeSlots() {
+    const fill = { position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' };
+    ['proj-cover', 'proj-shot-1'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) Object.assign(el.style, fill);
+    });
+  }
+
+  renderVals() {
+    const title = this.props.title ?? 'Atlas Canvas';
+    return {
+      accent: this.props.accent ?? '#1F4DFF',
+      title,
+      titleUpper: String(title).toUpperCase(),
+      year: this.props.year ?? '2025',
+      caseNo: this.props.caseNo ?? '01',
+    };
+  }
+}
+</script>
+</body>
+</html>

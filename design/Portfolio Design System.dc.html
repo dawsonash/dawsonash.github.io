@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F4F3EF; }
+  ::selection { background: #111110; color: #F4F3EF; }
+  @keyframes blink { 0%, 70% { opacity: 1; } 85%, 100% { opacity: 0.25; } }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="--ac: {{ accent }}; font-family: 'Space Grotesk', sans-serif; color: #111110; background: #F4F3EF; min-height: 100vh; position: relative; overflow-x: hidden;">
+
+  <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 60; pointer-events: none; max-width: 1180px; margin: 0 auto; padding: 0 40px;">
+      <div style="height: 100%; background: repeating-linear-gradient(to right, rgba(17,17,16,0.07) 0 1px, transparent 1px calc(100% / 12));"></div>
+    </div>
+  </sc-if>
+
+  <!-- ===================== NAV ===================== -->
+  <header data-screen-label="Navigation" style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0 40px; background: rgba(244,243,239,0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid #E2E1DB;">
+    <div style="display: flex; align-items: center; gap: 11px; font-weight: 700; font-size: 17px; letter-spacing: -0.02em;">
+      <span style="width: 11px; height: 11px; border-radius: 50%; background: var(--ac, #1F4DFF);"></span>
+      Dawson&nbsp;Ash
+    </div>
+    <nav style="display: flex; gap: 30px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">
+      <a href="#" style="color: #111110; text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent;" style-hover="border-bottom-color: var(--ac, #1F4DFF);">Work</a>
+      <a href="#" style="color: #6F6F68; text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent;" style-hover="color: #111110;">About</a>
+      <a href="#" style="color: #6F6F68; text-decoration: none; padding-bottom: 2px; border-bottom: 1px solid transparent;" style-hover="color: #111110;">Index</a>
+    </nav>
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #6F6F68; display: flex; align-items: center; gap: 7px;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: var(--ac, #1F4DFF); animation: blink 2.4s infinite;"></span>
+      AVAILABLE · '26
+    </div>
+  </header>
+
+  <!-- ===================== COVER ===================== -->
+  <section data-screen-label="Cover" style="padding: 64px 40px 0; max-width: 1180px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase;">
+      <span>Portfolio Design System</span>
+      <span>v1.0 — 2026</span>
+    </div>
+    <div style="position: relative; height: 580px; margin-top: 28px; overflow: hidden;">
+      <image-slot id="cover-hero" shape="rect" fit="cover" placeholder="Drop a hero image — full-bleed, high contrast" style="position: absolute; top: 0; left: 0; right: 0; height: 590px; width: 1107px"></image-slot>
+      <sc-if value="{{ heroBlend }}" hint-placeholder-val="{{ true }}">
+        <div style="position: absolute; left: -6px; right: 0; bottom: 0; white-space: nowrap; font-weight: 700; font-size: clamp(56px, 14.2vw, 196px); line-height: 0.82; letter-spacing: -0.05em; color: #ffffff; mix-blend-mode: difference; pointer-events: none;">DAWSON ASH</div>
+      </sc-if>
+      <sc-if value="{{ solidHero }}" hint-placeholder-val="{{ false }}">
+        <div style="position: absolute; left: -6px; right: 0; bottom: 0; white-space: nowrap; font-weight: 700; font-size: clamp(56px, 14.2vw, 196px); line-height: 0.82; letter-spacing: -0.05em; color: #111110; pointer-events: none;">DAWSON ASH</div>
+      </sc-if>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 36px; padding-top: 24px; border-top: 1px solid #111110;">
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 8px;">Role</div>
+        <div style="font-size: 18px; font-weight: 500;">Front-end Engineer</div>
+      </div>
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 8px;">Focus</div>
+        <div style="font-size: 18px; font-weight: 500;">Interface &amp; Motion</div>
+      </div>
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 8px;">Based</div>
+        <div style="font-size: 18px; font-weight: 500;">Remote / GMT−7</div>
+      </div>
+      <div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 8px;">System</div>
+        <div style="font-size: 18px; font-weight: 500; color: var(--ac, #1F4DFF);">Overlap / Contrast</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRINCIPLES ===================== -->
+  <section data-screen-label="Principles" style="padding: 96px 40px 0; max-width: 1180px; margin: 0 auto;">
+    <div style="display: flex; align-items: baseline; gap: 16px; border-top: 1px solid #111110; padding-top: 16px; margin-bottom: 44px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ac, #1F4DFF);">01</span>
+      <h2 style="font-weight: 700; font-size: 34px; letter-spacing: -0.025em; margin: 0;">Principles</h2>
+      <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase;">Foundations</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;">
+      <div style="border: 1px solid #E2E1DB; background: #fff; padding: 28px;">
+        <div style="position: relative; height: 64px; margin-bottom: 24px;">
+          <div style="position: absolute; left: 0; top: 8px; width: 48px; height: 48px; background: #111110;"></div>
+          <div style="position: absolute; left: 28px; top: 0; width: 48px; height: 48px; background: var(--ac, #1F4DFF); mix-blend-mode: multiply;"></div>
+        </div>
+        <h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 600; letter-spacing: -0.01em;">Overlap</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4A4A44;">Type, image, and color layer over one another. Edges collide on purpose to create depth and tension.</p>
+      </div>
+      <div style="border: 1px solid #E2E1DB; background: #fff; padding: 28px;">
+        <div style="position: relative; height: 64px; margin-bottom: 24px; display: flex;">
+          <div style="width: 38px; height: 48px; margin-top: 8px; background: #111110;"></div>
+          <div style="width: 38px; height: 48px; margin-top: 8px; background: #F4F3EF; border: 1px solid #111110;"></div>
+        </div>
+        <h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 600; letter-spacing: -0.01em;">Contrast</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4A4A44;">Near-black on warm paper. Scale jumps are dramatic — no timid mid-steps in size or weight.</p>
+      </div>
+      <div style="border: 1px solid #E2E1DB; background: #fff; padding: 28px;">
+        <div style="position: relative; height: 64px; margin-bottom: 24px; display: flex; flex-direction: column; justify-content: center; gap: 7px;">
+          <div style="width: 72px; height: 6px; background: #111110;"></div>
+          <div style="width: 44px; height: 6px; background: #C9C8C1;"></div>
+          <div style="width: 56px; height: 6px; background: #C9C8C1;"></div>
+        </div>
+        <h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 600; letter-spacing: -0.01em;">Shallow</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #4A4A44;">Three destinations, never more. Everything sits one click from the index. No nested menus.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COLOR ===================== -->
+  <section data-screen-label="Color" style="padding: 96px 40px 0; max-width: 1180px; margin: 0 auto;">
+    <div style="display: flex; align-items: baseline; gap: 16px; border-top: 1px solid #111110; padding-top: 16px; margin-bottom: 44px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ac, #1F4DFF);">02</span>
+      <h2 style="font-weight: 700; font-size: 34px; letter-spacing: -0.025em; margin: 0;">Color</h2>
+      <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase;">Click to copy</span>
+    </div>
+
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 16px;">Neutrals</div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 56px;">
+      <div data-hex="#F4F3EF" onClick="{{ copyHex }}" style="cursor: pointer; border: 1px solid #E2E1DB;">
+        <div style="height: 132px; background: #F4F3EF; border-bottom: 1px solid #E2E1DB;"></div>
+        <div style="padding: 14px 14px 16px; background: #fff;">
+          <div style="font-size: 15px; font-weight: 600;">Paper</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6F6F68; margin-top: 4px;">#F4F3EF</div>
+          <div style="font-size: 12px; color: #9A9A92; margin-top: 6px;">Background</div>
+        </div>
+      </div>
+      <div data-hex="#111110" onClick="{{ copyHex }}" style="cursor: pointer; border: 1px solid #E2E1DB;">
+        <div style="height: 132px; background: #111110;"></div>
+        <div style="padding: 14px 14px 16px; background: #fff;">
+          <div style="font-size: 15px; font-weight: 600;">Ink</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6F6F68; margin-top: 4px;">#111110</div>
+          <div style="font-size: 12px; color: #9A9A92; margin-top: 6px;">Foreground</div>
+        </div>
+      </div>
+      <div data-hex="#6F6F68" onClick="{{ copyHex }}" style="cursor: pointer; border: 1px solid #E2E1DB;">
+        <div style="height: 132px; background: #6F6F68;"></div>
+        <div style="padding: 14px 14px 16px; background: #fff;">
+          <div style="font-size: 15px; font-weight: 600;">Slate</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6F6F68; margin-top: 4px;">#6F6F68</div>
+          <div style="font-size: 12px; color: #9A9A92; margin-top: 6px;">Muted text</div>
+        </div>
+      </div>
+      <div data-hex="#E2E1DB" onClick="{{ copyHex }}" style="cursor: pointer; border: 1px solid #E2E1DB;">
+        <div style="height: 132px; background: #E2E1DB;"></div>
+        <div style="padding: 14px 14px 16px; background: #fff;">
+          <div style="font-size: 15px; font-weight: 600;">Line</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6F6F68; margin-top: 4px;">#E2E1DB</div>
+          <div style="font-size: 12px; color: #9A9A92; margin-top: 6px;">Hairlines</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 16px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase;">Accent — pick one</span>
+      <span style="font-size: 12px; color: #9A9A92;">One bold accent, swappable. Active: <span style="color: var(--ac, #1F4DFF); font-weight: 600;">●</span></span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;">
+      <div data-hex="#1F4DFF" onClick="{{ copyHex }}" style="cursor: pointer; border: 1px solid #E2E1DB;">
+        <div style="height: 132px; background: #1F4DFF; position: relative;"><span style="position: absolute; top: 10px; left: 12px; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.06em; color: rgba(255,255,255,0.85);">DEFAULT</span></div>
+        <div style="padding: 14px 14px 16px; background: #fff;">
+          <div style="font-size: 15px; font-weight: 600;">Electric</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6F6F68; margin-top: 4px;">#1F4DFF</div>
+        </div>
+      </div>
+      <div data-hex="#FF4D17" onClick="{{ copyHex }}" style="cursor: pointer; border: 1px solid #E2E1DB;">
+        <div style="height: 132px; background: #FF4D17;"></div>
+        <div style="padding: 14px 14px 16px; background: #fff;">
+          <div style="font-size: 15px; font-weight: 600;">Signal</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6F6F68; margin-top: 4px;">#FF4D17</div>
+        </div>
+      </div>
+      <div data-hex="#00B86B" onClick="{{ copyHex }}" style="cursor: pointer; border: 1px solid #E2E1DB;">
+        <div style="height: 132px; background: #00B86B;"></div>
+        <div style="padding: 14px 14px 16px; background: #fff;">
+          <div style="font-size: 15px; font-weight: 600;">Acid</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6F6F68; margin-top: 4px;">#00B86B</div>
+        </div>
+      </div>
+      <div data-hex="#7C3AED" onClick="{{ copyHex }}" style="cursor: pointer; border: 1px solid #E2E1DB;">
+        <div style="height: 132px; background: #7C3AED;"></div>
+        <div style="padding: 14px 14px 16px; background: #fff;">
+          <div style="font-size: 15px; font-weight: 600;">Ultra</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #6F6F68; margin-top: 4px;">#7C3AED</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TYPOGRAPHY ===================== -->
+  <section data-screen-label="Typography" style="padding: 96px 40px 0; max-width: 1180px; margin: 0 auto;">
+    <div style="display: flex; align-items: baseline; gap: 16px; border-top: 1px solid #111110; padding-top: 16px; margin-bottom: 44px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ac, #1F4DFF);">03</span>
+      <h2 style="font-weight: 700; font-size: 34px; letter-spacing: -0.025em; margin: 0;">Typography</h2>
+      <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase;">Two families</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 48px;">
+      <div style="border: 1px solid #E2E1DB; background: #fff; padding: 28px;">
+        <div style="font-size: 64px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;">Aa</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 20px;">
+          <span style="font-size: 18px; font-weight: 600;">Space Grotesk</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6F6F68;">DISPLAY / BODY</span>
+        </div>
+        <div style="font-size: 13px; color: #6F6F68; margin-top: 10px;">Regular · Medium · SemiBold · Bold</div>
+      </div>
+      <div style="border: 1px solid #E2E1DB; background: #fff; padding: 28px;">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 60px; font-weight: 500; line-height: 1;">Aa</div>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-top: 20px;">
+          <span style="font-size: 18px; font-weight: 600; font-family: 'JetBrains Mono', monospace;">JetBrains Mono</span>
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6F6F68;">LABELS / META</span>
+        </div>
+        <div style="font-size: 13px; color: #6F6F68; margin-top: 10px; font-family: 'JetBrains Mono', monospace;">Regular · Medium</div>
+      </div>
+    </div>
+
+    <div style="border-top: 1px solid #E2E1DB;">
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 24px 0; border-bottom: 1px solid #E2E1DB;">
+        <span style="flex: 0 0 130px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6F6F68;">DISPLAY / 96</span>
+        <span style="font-size: 80px; font-weight: 700; letter-spacing: -0.04em; line-height: 0.9;">Build</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 24px 0; border-bottom: 1px solid #E2E1DB;">
+        <span style="flex: 0 0 130px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6F6F68;">HEADING / 48</span>
+        <span style="font-size: 48px; font-weight: 700; letter-spacing: -0.025em;">Interfaces that move</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 24px 0; border-bottom: 1px solid #E2E1DB;">
+        <span style="flex: 0 0 130px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6F6F68;">TITLE / 30</span>
+        <span style="font-size: 30px; font-weight: 600; letter-spacing: -0.015em;">Selected case studies</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 24px 0; border-bottom: 1px solid #E2E1DB;">
+        <span style="flex: 0 0 130px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6F6F68;">BODY / 18</span>
+        <span style="font-size: 18px; font-weight: 400; line-height: 1.5; max-width: 520px;">A front-end engineer working at the seam of design and code — shipping fast, legible, slightly playful interfaces.</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 24px; padding: 24px 0; border-bottom: 1px solid #E2E1DB;">
+        <span style="flex: 0 0 130px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6F6F68;">LABEL / 12</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">View project ↗</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COMPONENTS ===================== -->
+  <section data-screen-label="Components" style="padding: 96px 40px 0; max-width: 1180px; margin: 0 auto;">
+    <div style="display: flex; align-items: baseline; gap: 16px; border-top: 1px solid #111110; padding-top: 16px; margin-bottom: 44px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--ac, #1F4DFF);">04</span>
+      <h2 style="font-weight: 700; font-size: 34px; letter-spacing: -0.025em; margin: 0;">Components</h2>
+      <span style="margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase;">Live samples</span>
+    </div>
+
+    <!-- Navigation component -->
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 14px;">Navigation — sticky, shallow</div>
+    <div style="border: 1px solid #E2E1DB; background: #fff; padding: 18px; margin-bottom: 48px;">
+      <div style="display: flex; align-items: center; justify-content: space-between; height: 56px; padding: 0 22px; background: #F4F3EF; border: 1px solid #E2E1DB;">
+        <div style="display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -0.02em;">
+          <span style="width: 10px; height: 10px; border-radius: 50%; background: var(--ac, #1F4DFF);"></span>Dawson Ash
+        </div>
+        <div style="display: flex; gap: 26px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;">
+          <span style="border-bottom: 1px solid var(--ac, #1F4DFF); padding-bottom: 2px;">Work</span>
+          <span style="color: #6F6F68;">About</span>
+          <span style="color: #6F6F68;">Index</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero / Intro component -->
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 14px;">Hero / Intro — overlapping type</div>
+    <div style="border: 1px solid #E2E1DB; background: #fff; padding: 26px; margin-bottom: 48px;">
+      <div style="position: relative; height: 300px; overflow: hidden; background: #111110;">
+        <image-slot id="demo-hero" shape="rect" fit="cover" placeholder="Drop project image" style="position: absolute; top: 0; left: 0; right: 0; height: 240px; width: 100%;"></image-slot>
+        <div style="position: absolute; left: -4px; right: 0; bottom: 14px; white-space: nowrap; font-weight: 700; font-size: 120px; line-height: 0.8; letter-spacing: -0.05em; color: #ffffff; mix-blend-mode: difference; pointer-events: none;">ATLAS</div>
+        <div style="position: absolute; top: 16px; right: 18px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #fff;">01 / CASE</div>
+      </div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 18px;">
+        <div style="font-size: 17px; max-width: 440px; line-height: 1.45; color: #4A4A44;">A real-time analytics canvas rebuilt for speed — 60fps interactions on million-row datasets.</div>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ac, #1F4DFF); white-space: nowrap;">View project ↗</span>
+      </div>
+    </div>
+
+    <!-- Case study layout component -->
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 14px;">Case Study — layout</div>
+    <div style="border: 1px solid #E2E1DB; background: #fff; padding: 0; margin-bottom: 16px;">
+      <div style="position: relative; height: 320px; overflow: hidden; background: #E2E1DB;">
+        <image-slot id="cs-cover" shape="rect" fit="cover" placeholder="Drop case-study cover" style="position: absolute; inset: 0; width: 100%; height: 100%;"></image-slot>
+        <div style="position: absolute; left: 32px; bottom: 24px; right: 32px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #fff; mix-blend-mode: difference;">CASE STUDY — 2025</div>
+          <div style="font-weight: 700; font-size: 64px; line-height: 0.92; letter-spacing: -0.04em; color: #fff; mix-blend-mode: difference;">Atlas Canvas</div>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: 220px 1fr; gap: 40px; padding: 40px 32px;">
+        <div style="display: flex; flex-direction: column; gap: 22px; border-right: 1px solid #E2E1DB; padding-right: 24px;">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 6px;">Role</div>
+            <div style="font-size: 15px; font-weight: 500;">Lead front-end</div>
+          </div>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 6px;">Year</div>
+            <div style="font-size: 15px; font-weight: 500;">2025</div>
+          </div>
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; color: #6F6F68; text-transform: uppercase; margin-bottom: 6px;">Stack</div>
+            <div style="font-size: 15px; font-weight: 500;">React · WebGL · Rust</div>
+          </div>
+          <div>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ac, #1F4DFF);">Live ↗</span>
+          </div>
+        </div>
+        <div>
+          <p style="margin: 0 0 18px; font-size: 19px; line-height: 1.5; font-weight: 500;">The old dashboard buckled past 100k rows. We rebuilt rendering on a custom WebGL canvas and moved aggregation to a Rust worker.</p>
+          <p style="margin: 0 0 28px; font-size: 16px; line-height: 1.6; color: #4A4A44;">Interaction latency dropped from 400ms to under 16ms. The result feels less like a web app and more like a native tool — pan, zoom, and filter without a single dropped frame.</p>
+          <div style="display: flex; gap: 40px; border-top: 1px solid #E2E1DB; padding-top: 22px;">
+            <div>
+              <div style="font-size: 40px; font-weight: 700; letter-spacing: -0.03em; color: var(--ac, #1F4DFF);">25×</div>
+              <div style="font-size: 13px; color: #6F6F68; margin-top: 4px;">faster interaction</div>
+            </div>
+            <div>
+              <div style="font-size: 40px; font-weight: 700; letter-spacing: -0.03em;">60fps</div>
+              <div style="font-size: 13px; color: #6F6F68; margin-top: 4px;">at 1M rows</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="#" style="display: flex; align-items: center; justify-content: space-between; padding: 26px 32px; background: #111110; color: #F4F3EF; text-decoration: none;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #9A9A92;">Next project</span>
+        <span style="font-size: 30px; font-weight: 700; letter-spacing: -0.02em;">Orbit Mail ↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer style="margin-top: 96px; border-top: 1px solid #111110; padding: 40px; max-width: 1180px; margin-left: auto; margin-right: auto;">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: #6F6F68;">
+      <span>DAWSON ASH — PORTFOLIO DESIGN SYSTEM</span>
+      <span>SPACE GROTESK + JETBRAINS MONO</span>
+      <span>v1.0 · 2026</span>
+    </div>
+  </footer>
+
+  <sc-if value="{{ copied }}" hint-placeholder-val="">
+    <div style="position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%); z-index: 70; background: #111110; color: #F4F3EF; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; padding: 11px 18px; display: flex; align-items: center; gap: 10px;">
+      <span style="width: 9px; height: 9px; border-radius: 50%; background: var(--ac, #1F4DFF);"></span>
+      COPIED {{ copied }}
+    </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1280, &quot;height&quot;: 2600 },
+  &quot;accent&quot;: { &quot;editor&quot;: &quot;color&quot;, &quot;default&quot;: &quot;#1F4DFF&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Theme&quot;, &quot;options&quot;: [&quot;#1F4DFF&quot;, &quot;#FF4D17&quot;, &quot;#00B86B&quot;, &quot;#7C3AED&quot;] },
+  &quot;heroBlend&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Theme&quot; },
+  &quot;showGrid&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Theme&quot; }
+}">
+class Component extends DCLogic {
+  state = { copied: null };
+
+  componentDidMount() { this._sizeSlots(); }
+  componentDidUpdate() { this._sizeSlots(); }
+
+  _sizeSlots() {
+    const set = (id, css) => {
+      const el = document.getElementById(id);
+      if (el) Object.assign(el.style, css);
+    };
+    set('cover-hero', { position: 'absolute', top: '0', left: '0', right: '0', width: '100%', height: '470px' });
+    set('demo-hero', { position: 'absolute', top: '0', left: '0', right: '0', width: '100%', height: '240px' });
+    set('cs-cover', { position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' });
+  }
+
+  copy(hex) {
+    if (!hex) return;
+    try { navigator.clipboard && navigator.clipboard.writeText(hex); } catch (e) {}
+    this.setState({ copied: hex });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ copied: null }), 1400);
+  }
+
+  renderVals() {
+    const accent = this.props.accent ?? '#1F4DFF';
+    const heroBlend = this.props.heroBlend ?? true;
+    return {
+      accent,
+      heroBlend,
+      solidHero: !heroBlend,
+      showGrid: this.props.showGrid ?? false,
+      copied: this.state.copied,
+      copyHex: (e) => this.copy(e.currentTarget.getAttribute('data-hex')),
+    };
+  }
+}
+</script>
+</body>
+</html>

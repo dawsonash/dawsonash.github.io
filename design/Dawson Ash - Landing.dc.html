@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #F4F3EF; }
+  ::selection { background: #111110; color: #F4F3EF; }
+  @keyframes blink { 0%, 70% { opacity: 1; } 85%, 100% { opacity: 0.25; } }
+  @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+  @keyframes kenBurns { from { transform: scale(1.05); } to { transform: scale(1.16); } }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; }
+  }
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+<div style="--ac: {{ accent }}; font-family: 'Space Grotesk', sans-serif; color: #111110; background: #F4F3EF; min-height: 100vh; position: relative; overflow-x: hidden;">
+
+  <sc-if value="{{ showGrid }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 60; pointer-events: none; max-width: 1180px; margin: 0 auto; padding: 0 40px;">
+      <div style="height: 100%; background: repeating-linear-gradient(to right, rgba(17,17,16,0.07) 0 1px, transparent 1px calc(100% / 12));"></div>
+    </div>
+  </sc-if>
+
+  <!-- ===================== HERO ===================== -->
+  <section data-screen-label="Hero" style="position: relative; height: clamp(680px, 100vh, 1040px); overflow: hidden; background: #111110;">
+    <image-slot id="hero-bg" shape="rect" fit="cover" src="uploads/zfyswMb5K99ynjZhegBvYT-b7ed69d6.jpg" placeholder="Drop a full-bleed hero image — high contrast" style="transform-origin: 60% 45%; animation: kenBurns 20s ease-in-out infinite alternate;"></image-slot>
+    <div style="position: absolute; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(17,17,16,0.35) 0%, rgba(17,17,16,0) 22%, rgba(17,17,16,0) 60%, rgba(17,17,16,0.55) 100%);"></div>
+
+    <!-- centered nav overlaid on hero -->
+    <nav style="position: absolute; top: 28px; left: 50%; transform: translateX(-50%); z-index: 10; display: flex; gap: 32px; font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(17,17,16,0.32); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgba(255,255,255,0.18); padding: 11px 26px; border-radius: 999px; box-shadow: 0 4px 24px rgba(17,17,16,0.18);">
+      <a href="#about" style="color: rgba(255,255,255,0.75); text-decoration: none; padding-top: 4px; padding-bottom: 3px; border-bottom: 1px solid transparent;" style-hover="color: #ffffff;">About</a><a href="#work" style="color: #ffffff; text-decoration: none; padding-top: 4px; padding-bottom: 3px; border-bottom: 1px solid transparent;" style-hover="border-bottom-color: var(--ac, #1F4DFF);">Work</a>
+
+      <a href="#contact" style="color: rgba(255,255,255,0.75); text-decoration: none; padding-top: 4px; padding-bottom: 3px; border-bottom: 1px solid transparent;" style-hover="color: #ffffff;">CONTACT</a>
+    </nav>
+    <div style="position: absolute; left: 40px; right: 40px; bottom: 28px; pointer-events: none;">
+      <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 22px;">
+        <span style="color: #ffffff; background: rgba(17,17,16,0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px;">Boulder, CO</span><span style="color: #ffffff; background: rgba(17,17,16,0.45); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px;">Front-end Engineer</span>
+
+      </div>
+      <div style="white-space: nowrap; font-weight: 700; font-size: clamp(56px, 15vw, 210px); line-height: 0.82; letter-spacing: -0.05em; color: #ffffff">DAWSON ASH</div>
+    </div>
+  </section>
+
+  <!-- ===================== ABOUT ME ===================== -->
+  <section data-screen-label="About" style="max-width: 1180px; margin: 0 auto; padding: 96px 40px;">
+    <h2 style="margin: 0 0 40px; font-size: clamp(28px, 3.6vw, 46px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05;">About me</h2>
+    <div style="max-width: 640px; margin: 0 auto;">
+
+      <div>
+        <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #4A4A44;">I'm pursuing a B.S. in Computer Science, building interfaces that are as thoughtful as they are functional. My experience spans research-driven UX and accessible, production-grade software.</p>
+
+        <div style="margin: 36px 0 0; display: flex; flex-direction: column; gap: 0;">
+          <div style="display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: baseline; padding: 18px 0; border-top: 1px solid #E2E1DB;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--ac, #1F4DFF); white-space: nowrap;">Software</span>
+            <div>
+              <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em;">CU Digital Accessibility Office</div>
+              <div style="font-size: 14px; line-height: 1.5; color: #6F6F68;">Internal accessibility tool development.</div>
+            </div>
+          </div><div style="display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: baseline; padding: 18px 0; border-top: 1px solid #E2E1DB;">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--ac, #1F4DFF); white-space: nowrap;">UX / UI</span>
+            <div>
+              <div style="font-size: 18px; font-weight: 700; letter-spacing: -0.02em;">NOAA</div>
+              <div style="font-size: 14px; line-height: 1.5; color: #6F6F68;">UX/UI design for scientific weather data tools.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SELECTED WORK ===================== -->
+  <section id="work" data-screen-label="Selected Work" style="max-width: 1180px; margin: 0 auto; padding: 0 40px 96px;">
+
+
+    <div style="display: flex; align-items: baseline; gap: 16px; border-top: 1px solid #111110; padding-top: 16px; margin-bottom: 8px;">
+
+      <h2 style="font-weight: 700; font-size: 34px; letter-spacing: -0.025em; margin: 0;">Selected Work</h2>
+
+    </div><a href="#" style="display: grid; grid-template-columns: 200px 1fr auto; gap: 32px; align-items: center; padding: 26px 12px; border-bottom: 1px solid #E2E1DB; text-decoration: none; color: #111110; transition: background 0.15s, padding-left 0.15s;" style-hover="background: #ffffff; padding-left: 24px; color: var(--ac, #1F4DFF);">
+      <div style="position: relative; width: 200px; height: 124px; overflow: hidden; background: #E2E1DB;">
+        <image-slot id="work-1" shape="rect" fit="cover" placeholder="Cover"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9A9A92;">01</span>
+          <span style="font-size: 38px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;">Atlas Canvas</span>
+        </div>
+        <div style="display: flex; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #6F6F68; text-transform: uppercase;">
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">WebGL</span>
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">Data Viz</span>
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">Rust</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6F6F68;">2025</span>
+        <span style="font-size: 26px;">↗</span>
+      </div>
+    </a>
+
+    <a href="#" style="display: grid; grid-template-columns: 200px 1fr auto; gap: 32px; align-items: center; padding: 26px 12px; border-bottom: 1px solid #E2E1DB; text-decoration: none; color: #111110; transition: background 0.15s, padding-left 0.15s;" style-hover="background: #ffffff; padding-left: 24px; color: var(--ac, #1F4DFF);">
+      <div style="position: relative; width: 200px; height: 124px; overflow: hidden; background: #E2E1DB;">
+        <image-slot id="work-2" shape="rect" fit="cover" placeholder="Cover"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9A9A92;">02</span>
+          <span style="font-size: 38px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;">Orbit Mail</span>
+        </div>
+        <div style="display: flex; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #6F6F68; text-transform: uppercase;">
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">Design System</span>
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">React</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6F6F68;">2024</span>
+        <span style="font-size: 26px;">↗</span>
+      </div>
+    </a>
+
+    <a href="#" style="display: grid; grid-template-columns: 200px 1fr auto; gap: 32px; align-items: center; padding: 26px 12px; border-bottom: 1px solid #E2E1DB; text-decoration: none; color: #111110; transition: background 0.15s, padding-left 0.15s;" style-hover="background: #ffffff; padding-left: 24px; color: var(--ac, #1F4DFF);">
+      <div style="position: relative; width: 200px; height: 124px; overflow: hidden; background: #E2E1DB;">
+        <image-slot id="work-3" shape="rect" fit="cover" placeholder="Cover"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9A9A92;">03</span>
+          <span style="font-size: 38px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;">Prism UI</span>
+        </div>
+        <div style="display: flex; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #6F6F68; text-transform: uppercase;">
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">Component Lib</span>
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">TypeScript</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6F6F68;">2024</span>
+        <span style="font-size: 26px;">↗</span>
+      </div>
+    </a>
+
+    <a href="#" style="display: grid; grid-template-columns: 200px 1fr auto; gap: 32px; align-items: center; padding: 26px 12px; border-bottom: 1px solid #E2E1DB; text-decoration: none; color: #111110; transition: background 0.15s, padding-left 0.15s;" style-hover="background: #ffffff; padding-left: 24px; color: var(--ac, #1F4DFF);">
+      <div style="position: relative; width: 200px; height: 124px; overflow: hidden; background: #E2E1DB;">
+        <image-slot id="work-4" shape="rect" fit="cover" placeholder="Cover"></image-slot>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: baseline; gap: 14px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #9A9A92;">04</span>
+          <span style="font-size: 38px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;">Field Notes</span>
+        </div>
+        <div style="display: flex; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: #6F6F68; text-transform: uppercase;">
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">Editorial</span>
+          <span style="border: 1px solid #E2E1DB; padding: 3px 8px;">Motion</span>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 28px;">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #6F6F68;">2023</span>
+        <span style="font-size: 26px;">↗</span>
+      </div>
+    </a>
+  </section>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about" data-screen-label="Timeline" style="background: #111110; color: #F4F3EF;">
+    <div style="max-width: 1180px; margin: 0 auto; padding: 96px 40px;">
+
+      <h2 style="margin: 0 0 56px; font-size: clamp(30px, 4vw, 52px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.02;">Timeline</h2>
+      <div id="tl-wrap" style="position: relative;">
+        <div id="tl-line" style="position: absolute; top: 24px; left: 0; right: 0; height: 1px; background: #3A3A38;"></div>
+        <div id="timeline" style="display: flex; position: relative;">
+          <div data-tl-item="1" style="flex: 1; padding: 0 28px 0 0; min-height: 230px; cursor: default;">
+            <div data-tl-dot="1" style="flex-shrink: 0; position: relative; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #3A3A38; background: #1C1C1A; overflow: hidden;">
+              <image-slot id="tl-logo-1" shape="circle" fit="cover" placeholder="Logo" style="position: absolute; inset: 0; width: 100%; height: 100%;"></image-slot>
+            </div>
+            <div data-tl-inner="1" style="transform-origin: left top; margin-top: 20px;">
+              <div data-tl-year="1" style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #6F6F68; margin-bottom: 10px;">2017</div>
+              <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2;">Where it started</div>
+              <div data-tl-desc="1" style="margin-top: 14px; font-size: 13px; line-height: 1.6; color: #7C7B74; max-width: 230px;">School or first job — one or two lines in your own words about this chapter.</div>
+            </div>
+          </div>
+          <div data-tl-item="1" style="flex: 1; padding: 0 28px 0 0; min-height: 230px; cursor: default;">
+            <div data-tl-dot="1" style="flex-shrink: 0; position: relative; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #3A3A38; background: #1C1C1A; overflow: hidden;">
+              <image-slot id="tl-logo-2" shape="circle" fit="cover" placeholder="Logo" style="position: absolute; inset: 0; width: 100%; height: 100%;"></image-slot>
+            </div>
+            <div data-tl-inner="1" style="transform-origin: left top; margin-top: 20px;">
+              <div data-tl-year="1" style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #6F6F68; margin-bottom: 10px;">2019</div>
+              <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2;">Role title</div>
+              <div data-tl-desc="1" style="margin-top: 14px; font-size: 13px; line-height: 1.6; color: #7C7B74; max-width: 230px;">Company — one or two lines on what you did and shipped there.</div>
+            </div>
+          </div>
+          <div data-tl-item="1" style="flex: 1; padding: 0 28px 0 0; min-height: 230px; cursor: default;">
+            <div data-tl-dot="1" style="flex-shrink: 0; position: relative; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #3A3A38; background: #1C1C1A; overflow: hidden;">
+              <image-slot id="tl-logo-3" shape="circle" fit="cover" placeholder="Logo" style="position: absolute; inset: 0; width: 100%; height: 100%;"></image-slot>
+            </div>
+            <div data-tl-inner="1" style="transform-origin: left top; margin-top: 20px;">
+              <div data-tl-year="1" style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #6F6F68; margin-bottom: 10px;">2021</div>
+              <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2;">Role title</div>
+              <div data-tl-desc="1" style="margin-top: 14px; font-size: 13px; line-height: 1.6; color: #7C7B74; max-width: 230px;">Company — one or two lines on what you did and shipped there.</div>
+            </div>
+          </div>
+          <div data-tl-item="1" style="flex: 1; padding: 0 28px 0 0; min-height: 230px; cursor: default;">
+            <div data-tl-dot="1" style="flex-shrink: 0; position: relative; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #3A3A38; background: #1C1C1A; overflow: hidden;">
+              <image-slot id="tl-logo-4" shape="circle" fit="cover" placeholder="Logo" style="position: absolute; inset: 0; width: 100%; height: 100%;"></image-slot>
+            </div>
+            <div data-tl-inner="1" style="transform-origin: left top; margin-top: 20px;">
+              <div data-tl-year="1" style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #6F6F68; margin-bottom: 10px;">2023</div>
+              <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2;">Role title</div>
+              <div data-tl-desc="1" style="margin-top: 14px; font-size: 13px; line-height: 1.6; color: #7C7B74; max-width: 230px;">Company — one or two lines on what you did and shipped there.</div>
+            </div>
+          </div>
+          <div data-tl-item="1" style="flex: 1; padding: 0; min-height: 230px; cursor: default;">
+            <div data-tl-dot="1" style="flex-shrink: 0; position: relative; width: 48px; height: 48px; border-radius: 50%; border: 1px solid #3A3A38; background: #1C1C1A; overflow: hidden;">
+              <image-slot id="tl-logo-5" shape="circle" fit="cover" placeholder="Logo" style="position: absolute; inset: 0; width: 100%; height: 100%;"></image-slot>
+            </div>
+            <div data-tl-inner="1" style="transform-origin: left top; margin-top: 20px;">
+              <div data-tl-year="1" style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #6F6F68; margin-bottom: 10px;">2026 —</div>
+              <div style="font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2;">Current role</div>
+              <div data-tl-desc="1" style="margin-top: 14px; font-size: 13px; line-height: 1.6; color: #7C7B74; max-width: 230px;">Where you are now — the team, the focus, the thing you care about.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT / FOOTER ===================== -->
+  <section id="contact" data-screen-label="Contact">
+    <dc-import name="Footer" accent="{{ accent }}" kicker="04" email="hi@dawsonash.com" year="2026" hint-size="100%,420px"></dc-import>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#FF4D17&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Theme&quot;,&quot;options&quot;:[&quot;#1F4DFF&quot;,&quot;#FF4D17&quot;,&quot;#00B86B&quot;,&quot;#7C3AED&quot;]},&quot;showGrid&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Theme&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() { this._sizeSlots(); this._initMotion(); }
+  componentDidUpdate() { this._sizeSlots(); }
+
+  _initMotion() {
+    if (this._motionDone) return;
+    this._motionDone = true;
+
+    // work-row arrow nudge on hover
+    document.querySelectorAll('#work a').forEach((a) => {
+      const arrow = a.querySelector('div:last-child span:last-child');
+      if (!arrow) return;
+      arrow.style.transition = 'transform 0.25s cubic-bezier(0.2,0.8,0.2,1)';
+      a.addEventListener('mouseenter', () => { arrow.style.transform = 'translate(4px, -4px)'; });
+      a.addEventListener('mouseleave', () => { arrow.style.transform = 'none'; });
+    });
+
+    // timeline: grow hovered item, shift + dim siblings, reveal description.
+    // The line is a single separate element (#tl-line) so it stays continuous
+    // while items translate along it.
+    const wrap = document.getElementById('tl-wrap');
+    const items = Array.from(document.querySelectorAll('[data-tl-item]'));
+    const ease = 'cubic-bezier(0.2,0.8,0.2,1)';
+    items.forEach((item) => {
+      item.style.transition = `transform 0.35s ${ease}, opacity 0.35s ease, filter 0.35s ease`;
+      const inner = item.querySelector('[data-tl-inner]');
+      const year = item.querySelector('[data-tl-year]');
+      const desc = item.querySelector('[data-tl-desc]');
+      const dot = item.querySelector('[data-tl-dot]');
+      if (inner) inner.style.transition = `transform 0.35s ${ease}`;
+      if (year) year.style.transition = 'color 0.3s ease';
+      if (desc) desc.style.transition = 'color 0.3s ease';
+      if (dot) dot.style.transition = `transform 0.35s ${ease}, border-color 0.3s ease`;
+    });
+    const reset = () => {
+      items.forEach((it) => {
+        it.style.transform = 'none';
+        it.style.opacity = '1';
+        it.style.filter = 'none';
+        it.style.background = 'transparent';
+        const inner = it.querySelector('[data-tl-inner]');
+        const year = it.querySelector('[data-tl-year]');
+        const desc = it.querySelector('[data-tl-desc]');
+        const dot = it.querySelector('[data-tl-dot]');
+        if (inner) inner.style.transform = 'none';
+        if (year) year.style.color = '#6F6F68';
+        if (desc) desc.style.color = '#7C7B74';
+        if (dot) { dot.style.borderColor = '#3A3A38'; dot.style.transform = 'none'; }
+      });
+    };
+    this._tlReset = reset;
+    items.forEach((item, i) => {
+      item.addEventListener('mouseenter', () => {
+        const v = this._tlVertical;
+        items.forEach((it, j) => {
+          const inner = it.querySelector('[data-tl-inner]');
+          const year = it.querySelector('[data-tl-year]');
+          const desc = it.querySelector('[data-tl-desc]');
+          const dot = it.querySelector('[data-tl-dot]');
+          if (j === i) {
+            it.style.transform = 'none';
+            it.style.opacity = '1';
+            it.style.filter = 'none';
+            if (v) it.style.background = '#1C1C1A';
+            if (inner) inner.style.transform = v ? 'none' : 'scale(1.1)';
+            if (year) year.style.color = 'var(--ac, #1F4DFF)';
+            if (desc) desc.style.color = '#A9A8A1';
+            if (dot) { dot.style.borderColor = 'var(--ac, #1F4DFF)'; dot.style.transform = 'scale(1.12)'; }
+          } else {
+            const off = j < i ? -1 : 1;
+            it.style.transform = v ? 'none' : `translateX(${off * 22}px)`;
+            it.style.opacity = v ? '1' : '0.45';
+            it.style.filter = v ? 'none' : 'brightness(0.6)';
+            it.style.background = 'transparent';
+            if (inner) inner.style.transform = 'none';
+            if (year) year.style.color = '#6F6F68';
+            if (desc) desc.style.color = '#7C7B74';
+            if (dot) { dot.style.borderColor = '#3A3A38'; dot.style.transform = 'none'; }
+          }
+        });
+      });
+    });
+    if (wrap) wrap.addEventListener('mouseleave', reset);
+    this._layoutTimeline();
+    if (wrap && window.ResizeObserver) {
+      new ResizeObserver(() => requestAnimationFrame(() => this._layoutTimeline())).observe(wrap);
+    } else {
+      window.addEventListener('resize', () => this._layoutTimeline());
+    }
+  }
+
+  _layoutTimeline() {
+    const wrap = document.getElementById('tl-wrap');
+    const line = document.getElementById('tl-line');
+    const tl = document.getElementById('timeline');
+    if (!wrap || !line || !tl) return;
+    const vertical = wrap.offsetWidth < 700;
+    if (this._tlVertical === vertical) return;
+    this._tlVertical = vertical;
+    if (this._tlReset) this._tlReset();
+    const items = Array.from(document.querySelectorAll('[data-tl-item]'));
+    if (vertical) {
+      line.style.display = 'none';
+      tl.style.flexDirection = 'column';
+      tl.style.gap = '4px';
+      items.forEach((it) => {
+        it.style.display = 'flex'; it.style.gap = '20px'; it.style.alignItems = 'flex-start';
+        it.style.padding = '16px'; it.style.minHeight = '0';
+        it.style.borderRadius = '12px'; it.style.background = 'transparent';
+        const inner = it.querySelector('[data-tl-inner]');
+        const desc = it.querySelector('[data-tl-desc]');
+        if (inner) inner.style.marginTop = '4px';
+        if (desc) desc.style.maxWidth = '460px';
+      });
+    } else {
+      line.style.display = ''; line.style.top = '24px'; line.style.bottom = 'auto'; line.style.left = '0'; line.style.right = '0';
+      line.style.width = 'auto'; line.style.height = '1px';
+      tl.style.flexDirection = 'row';
+      tl.style.gap = '';
+      items.forEach((it, idx) => {
+        it.style.display = 'block'; it.style.gap = ''; it.style.alignItems = '';
+        it.style.padding = idx === items.length - 1 ? '0' : '0 28px 0 0'; it.style.minHeight = '230px';
+        it.style.borderRadius = ''; it.style.background = 'transparent';
+        const inner = it.querySelector('[data-tl-inner]');
+        const desc = it.querySelector('[data-tl-desc]');
+        if (inner) inner.style.marginTop = '20px';
+        if (desc) desc.style.maxWidth = '230px';
+      });
+    }
+  }
+
+  _sizeSlots() {
+    const fill = { position: 'absolute', top: '0', left: '0', width: '100%', height: '100%' };
+    ['hero-bg', 'work-1', 'work-2', 'work-3', 'work-4', 'about-portrait'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) Object.assign(el.style, fill);
+    });
+  }
+
+  renderVals() {
+    return {
+      accent: this.props.accent ?? '#1F4DFF',
+      showGrid: this.props.showGrid ?? false,
+    };
+  }
+}
+</script>
+</body>
+</html>
