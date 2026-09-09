@@ -19,7 +19,7 @@ export default function Work() {
             {blurb && <p className="work-row__blurb">{blurb}</p>}
           </div>
           <div className="work-row__meta">
-            <span className="work-row__arrow" aria-hidden="true">↗</span>
+            <span className="work-row__arrow" aria-hidden="true">↗︎</span>
           </div>
         </a>
       ))}

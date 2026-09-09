@@ -72,7 +72,7 @@ export default function ProjectPage({ project }) {
           </div>
           {liveUrl && (
             <a className="project-meta__live" href={liveUrl} target="_blank" rel="noreferrer">
-              {liveLabel || 'Live site'} ↗
+              {liveLabel || 'Live site'} ↗︎
             </a>
           )}
         </div>
@@ -130,7 +130,7 @@ export default function ProjectPage({ project }) {
       {next && (
         <a className="project-next" href={`#/project/${next.slug}`}>
           <span className="project-next__label">Next project</span>
-          <span className="project-next__title">{next.title} ↗</span>
+          <span className="project-next__title">{next.title} ↗︎</span>
         </a>
       )}
 

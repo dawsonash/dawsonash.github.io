@@ -19,7 +19,9 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  font-family: 'Space Grotesk', sans-serif;
+  /* Explicit text-font fallbacks keep U+2197 (\2197) out of the emoji font on iOS. */
+  font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  font-variant-emoji: text;
   color: var(--ink);
   background: var(--paper);
   overflow-x: hidden;
@@ -305,6 +307,10 @@ body.is-scrolled .nav {
   font-size: 26px;
   display: inline-block;
   transition: transform 0.25s var(--ease);
+  /* Space Grotesk has no U+2197, so the glyph comes from a fallback font.
+     iOS picks Apple Color Emoji unless we force text presentation. */
+  font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  font-variant-emoji: text;
 }
 
 .work-row:hover .work-row__arrow { transform: translate(4px, -4px); }
@@ -504,6 +510,8 @@ body.is-scrolled .nav {
 .footer .arrow {
   display: inline-block;
   transition: transform 0.25s var(--ease);
+  font-family: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  font-variant-emoji: text;
 }
 
 .footer a:hover .arrow { transform: translate(3px, -3px); }
