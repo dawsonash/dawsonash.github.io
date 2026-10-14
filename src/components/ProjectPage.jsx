@@ -1,18 +1,30 @@
 import { navLinks } from '../data.js'
 import Footer from './Footer.jsx'
 
-function Section({ label, paragraphs }) {
+function Section({ label, paragraphs, shot }) {
   return (
-    <section className="project-section">
-      <div className="project-section__grid">
-        <div className="project-section__label">{label}</div>
-        <div className="project-section__body">
-          {paragraphs.map((text, i) => (
-            <p key={i}>{text}</p>
-          ))}
+    <>
+      <section className="project-section">
+        <div className="project-section__grid">
+          <div className="project-section__label">{label}</div>
+          <div className="project-section__body">
+            {paragraphs.map((text, i) => (
+              <p key={i}>{text}</p>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* ---- optional shot under the section ---- */}
+      {shot && (
+        <section className="project-shot">
+          <div className="project-shot__frame">
+            <img className="project-shot__img" src={shot.src} alt={shot.alt || label} loading="lazy" />
+          </div>
+          {shot.caption && <p className="project-shot__caption">{shot.caption}</p>}
+        </section>
+      )}
+    </>
   )
 }
 
@@ -33,7 +45,7 @@ export default function ProjectPage({ project }) {
     next,
   } = project
 
-  const [first, second] = sections
+  const [first, second, ...rest] = sections
 
   return (
     <div className="project">
@@ -91,6 +103,11 @@ export default function ProjectPage({ project }) {
       {/* ---- approach ---- */}
       {second && <Section {...second} />}
 
+      {/* ---- optional further sections ---- */}
+      {rest.map((section) => (
+        <Section key={section.label} {...section} />
+      ))}
+
       {/* ---- optional second shot ---- */}
       {shot2 && (
         <section className="project-shot">
@@ -119,12 +136,14 @@ export default function ProjectPage({ project }) {
       )}
 
       {/* ---- outcome ---- */}
-      <section className="project-outcome">
-        <div className="project-section__grid">
-          <div className="project-section__label project-outcome__label">Outcome</div>
-          <p className="project-outcome__text">{outcome}</p>
-        </div>
-      </section>
+      {outcome && (
+        <section className="project-outcome">
+          <div className="project-section__grid">
+            <div className="project-section__label project-outcome__label">Outcome</div>
+            <p className="project-outcome__text">{outcome}</p>
+          </div>
+        </section>
+      )}
 
       {/* ---- next project ---- */}
       {next && (

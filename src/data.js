@@ -26,6 +26,11 @@ export const workItems = [
     blurb: 'Usability testing without the devops. Demonstrate the task once, and every session after is scored against what you did.',
   },
   {
+    title: 'Typely',
+    slug: 'typely',
+    blurb: 'A swipe keyboard for iPhone designed law by law: it shows its guess while you swipe, fixes mistakes in one gesture, and fits its keys to your thumb.',
+  },
+  {
     title: 'DAO Tools',
     slug: 'dao-tools',
     blurb: 'The captioning pipeline for CU’s Digital Accessibility Office, on GPU infrastructure that starts per file and tears itself down after.',
@@ -140,6 +145,80 @@ export const projects = {
       ],
     },
     outcome: 'A deployed, end-to-end event platform, from Figma prototype to production, that I own and can point anyone to.',
+    next: { title: 'Typely', slug: 'typely' },
+  },
+  typely: {
+    caseNo: '04',
+    title: 'Typely',
+    year: '2026',
+    tagline: 'A swipe keyboard for iPhone that shows what it thinks you’re typing while you type, makes fixing a mistake a single gesture, and learns the shape of your thumb.',
+    role: 'Solo design & build',
+    stack: 'Swift · SwiftUI · Rust · UniFFI',
+    logo: '/logos/typely.png',
+    cover: '/projects/typely-cover.jpg',
+    shot: '/projects/typely-cover.jpg',
+    sections: [
+      {
+        label: 'Problem',
+        paragraphs: [
+          'I wasn’t satisfied with the keyboard on my iPhone. I type on it all day, and it kept getting in my way: guessing wrong, and making me start over when it did.',
+          'I had a foundation in UX, and I thought I could make something better.',
+        ],
+      },
+      {
+        label: 'Approach',
+        paragraphs: [
+          'I treated the keyboard as an interaction problem before a language-model one, and designed each piece of it against a law or model of human performance.',
+          'Underneath, it stays a normal QWERTY keyboard with system proportions, because people expect a keyboard to work like every other one they’ve used. The gestures layer on top for anyone who wants to get faster.',
+        ],
+        shot: {
+          src: '/projects/typely-train.jpg',
+          alt: 'The Train tab with the typing test and gesture dojo, and keyboard settings',
+          caption: 'Train and Settings in the iOS Simulator. The gesture dojo drills each gesture on its own.',
+        },
+      },
+      {
+        label: 'Fitts’s law',
+        paragraphs: [
+          'Movement time grows with distance and shrinks with target width. Mid-swipe, the finger is already near the top row, so the accept target sits directly above it: the prediction strip, the full width of the screen. Drag up into the strip and lift to take the word early, before the swipe is finished.',
+          'Backspace scrub uses the same idea. Drag left from backspace and the whole keyboard becomes the drag area. Each half key of travel targets one more word, previewed in red.',
+        ],
+        shot: {
+          src: '/projects/typely-fitts.jpg',
+          alt: 'Grab armed in the full-width strip, and a scrub previewing two words in red',
+          caption: 'Grab, armed once the finger crosses into the strip, and scrub, with the whole keyboard as the drag area. Frames from the app’s onboarding demo.',
+        },
+      },
+      {
+        label: 'Keystroke-level model',
+        paragraphs: [
+          'The keystroke-level model predicts task time by counting the physical and mental steps a task takes. On a stock keyboard, a wrong swipe costs noticing it, deleting it, and swiping again. In Typely, the runner-up waits in the strip after every swipe, and one tap swaps it in. That tap is also the strongest signal the keyboard learns from.',
+          'The rule across the keyboard is that every error path costs at most one gesture.',
+        ],
+        shot: {
+          src: '/projects/typely-replace.jpg',
+          alt: 'The keyboard offers too as the runner-up after a swipe of To, then swaps it in with one tap',
+          caption: 'The real keyboard in the iOS Simulator: a swipe lands “To”, the runner-up “too” waits behind an undo arrow, and one tap swaps it.',
+        },
+      },
+      {
+        label: 'Hick–Hyman law',
+        paragraphs: [
+          'Choice time grows with the number of options. The strip shows one word, not three, so the decision is accept or ignore rather than scan and pick. The cost is that one slot is right less often, which is exactly why correction has to be cheap.',
+        ],
+      },
+      {
+        label: 'Feedback',
+        paragraphs: [
+          'Norman’s gulf of evaluation is how hard it is to tell what a system did. Most keyboards close it only after you lift. Typely decodes the partial path about thirty times a second and shows its best guess while you swipe, with opacity tracking confidence and a light haptic once it’s sure.',
+        ],
+        shot: {
+          src: '/projects/typely-feedback.jpg',
+          alt: 'A muted low-confidence guess mid-swipe, then a solid confident one',
+          caption: 'Mid-swipe, a low-confidence guess shows muted; once the decoder is sure, the word goes solid and the trail turns blue. Onboarding demo.',
+        },
+      },
+    ],
     next: { title: 'Integral', slug: 'integral' },
   },
 }
