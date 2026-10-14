@@ -21,14 +21,14 @@ export const roles = [
 
 export const workItems = [
   {
-    title: 'Integral',
-    slug: 'integral',
-    blurb: 'Usability testing without the devops. Demonstrate the task once, and every session after is scored against what you did.',
-  },
-  {
     title: 'Typely',
     slug: 'typely',
     blurb: 'A swipe keyboard for iPhone designed law by law: it shows its guess while you swipe, fixes mistakes in one gesture, and fits its keys to your thumb.',
+  },
+  {
+    title: 'Integral',
+    slug: 'integral',
+    blurb: 'Usability testing without the devops. Demonstrate the task once, and every session after is scored against what you did.',
   },
   {
     title: 'DAO Tools',
