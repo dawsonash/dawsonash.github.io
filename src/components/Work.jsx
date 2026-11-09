@@ -15,7 +15,12 @@ export default function Work() {
             )}
           </div>
           <div className="work-row__body">
-            <span className="work-row__title">{title}</span>
+            <span className="work-row__title">
+              {title}
+              {projects[slug]?.status && (
+                <span className="work-row__status">{projects[slug].status}</span>
+              )}
+            </span>
             {blurb && <p className="work-row__blurb">{blurb}</p>}
           </div>
           <div className="work-row__meta">

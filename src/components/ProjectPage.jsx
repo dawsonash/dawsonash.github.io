@@ -36,12 +36,15 @@ export default function ProjectPage({ project }) {
     stack,
     liveUrl,
     liveLabel,
+    status,
+    repoUrl,
     cover,
     shot,
     shot2,
     wireframes,
     sections,
     outcome,
+    outcomeLabel,
     next,
   } = project
 
@@ -82,10 +85,20 @@ export default function ProjectPage({ project }) {
             <div className="project-meta__label">Stack</div>
             <div className="project-meta__value">{stack}</div>
           </div>
-          {liveUrl && (
-            <a className="project-meta__live" href={liveUrl} target="_blank" rel="noreferrer">
-              {liveLabel || 'Live site'} ↗︎
-            </a>
+          {(liveUrl || status || repoUrl) && (
+            <div className="project-meta__links">
+              {status && <span className="project-meta__status">{status}</span>}
+              {liveUrl && (
+                <a className="project-meta__live" href={liveUrl} target="_blank" rel="noreferrer">
+                  {liveLabel || 'Live site'} ↗︎
+                </a>
+              )}
+              {repoUrl && (
+                <a className="project-meta__live" href={repoUrl} target="_blank" rel="noreferrer">
+                  GitHub ↗︎
+                </a>
+              )}
+            </div>
           )}
         </div>
       </section>
@@ -139,7 +152,7 @@ export default function ProjectPage({ project }) {
       {outcome && (
         <section className="project-outcome">
           <div className="project-section__grid">
-            <div className="project-section__label project-outcome__label">Outcome</div>
+            <div className="project-section__label project-outcome__label">{outcomeLabel || 'Outcome'}</div>
             <p className="project-outcome__text">{outcome}</p>
           </div>
         </section>

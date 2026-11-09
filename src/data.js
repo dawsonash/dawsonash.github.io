@@ -21,24 +21,19 @@ export const roles = [
 
 export const workItems = [
   {
-    title: 'Typely',
-    slug: 'typely',
-    blurb: 'A swipe keyboard for iPhone designed law by law: it shows its guess while you swipe, fixes mistakes in one gesture, and fits its keys to your thumb.',
-  },
-  {
-    title: 'Integral',
-    slug: 'integral',
-    blurb: 'Usability testing without the devops. Demonstrate the task once, and every session after is scored against what you did.',
-  },
-  {
     title: 'DAO Tools',
     slug: 'dao-tools',
     blurb: 'The captioning pipeline for CU’s Digital Accessibility Office, on GPU infrastructure that starts per file and tears itself down after.',
   },
   {
-    title: 'Function Finder',
-    slug: 'function-finder',
-    blurb: 'A campus events app for finding and hosting what’s happening around you, grown from a class prototype into a deployed product.',
+    title: 'HomeTV',
+    slug: 'hometv',
+    blurb: 'An ad-free TV home screen for an old gaming PC, controlled from your phone.',
+  },
+  {
+    title: 'Integral',
+    slug: 'integral',
+    blurb: 'Usability testing without the devops. Demonstrate the task once, and every session after is scored against what you did.',
   },
 ]
 
@@ -52,8 +47,8 @@ export const projects = {
     tagline: 'Usability testing that starts by watching you succeed. Demonstrate the task once, and every session after gets measured against what you did.',
     role: 'Solo design & build',
     stack: 'Node · rrweb · PostgreSQL · Stripe',
-    liveUrl: 'https://app.integralco.us/',
-    liveLabel: 'Live site',
+    status: 'Offline',
+    repoUrl: 'https://github.com/dawsonash/integral',
     cover: '/projects/integral-cover.jpg',
     logo: '/logos/integral.svg',
     shot: '/projects/integral-shot.jpg',
@@ -73,7 +68,7 @@ export const projects = {
         ],
       },
     ],
-    outcome: 'A workflow that used to be tedious and ceremonial is now low-stakes and routine. There is no infrastructure to run for a usability test, people use your app the way they would outside a testing environment, and what comes back arrives aggregated: trends you can read at a glance instead of a folder of recordings to watch one at a time.',
+    outcome: 'A workflow that used to be tedious and ceremonial is now low-stakes and routine. There is no infrastructure to run for a usability test, people use your app the way they would outside a testing environment, and what comes back arrives aggregated: trends you can read at a glance instead of a folder of recordings to watch one at a time. The hosted version is offline now, but the code is on GitHub.',
     next: { title: 'DAO Tools', slug: 'dao-tools' },
   },
   'dao-tools': {
@@ -107,7 +102,7 @@ export const projects = {
       caption: 'DAOTUI, the first generation. A one-time setup wizard replaced the bash script students were handed.',
     },
     outcome: 'In real use at the Digital Accessibility Office. Idle GPU billing and orphaned storage are gone because teardown is part of the pipeline rather than something a person remembers to do, and the people running it no longer need a terminal to do their job.',
-    next: { title: 'Function Finder', slug: 'function-finder' },
+    next: { title: 'HomeTV', slug: 'hometv' },
   },
   'function-finder': {
     caseNo: '03',
@@ -219,6 +214,44 @@ export const projects = {
         },
       },
     ],
+    next: { title: 'HomeTV', slug: 'hometv' },
+  },
+  hometv: {
+    caseNo: '05',
+    title: 'HomeTV',
+    year: '2026',
+    tagline: 'An ad-free home screen for my TV, running on an old gaming PC, with my phone as the remote.',
+    role: 'Solo design & build',
+    stack: '.NET 10 · TypeScript · WebSockets · WebView2',
+    repoUrl: 'https://github.com/dawsonash/HomeTV',
+    logo: '/logos/hometv.svg',
+    cover: '/projects/hometv-launcher.jpg',
+    shot: '/projects/hometv-launcher.jpg',
+    sections: [
+      {
+        label: 'Problem',
+        paragraphs: [
+          'My smart TV’s OS was full of bloatware and served me ads around the clock. I weighed a few fixes and settled on repurposing my old gaming PC to run a custom OS for the TV.',
+          'The PC had real advantages over the TV’s own software. It’s far more powerful than the chip inside the TV, so everything feels faster. I can customize every part of it. And it shows zero ads.',
+        ],
+      },
+      {
+        label: 'Design',
+        paragraphs: [
+          'Building the whole thing for me meant I could put what I actually care about first. The home screen is just big tiles for the apps I use, with the weather and my teams’ next games above them. A few personal touches:',
+          'A phone remote. Not needing the remote in hand is a nice (and admittedly lazy) add-on. Any phone on the Wi-Fi pairs with a PIN shown on the TV and becomes a touchpad, keyboard, and volume control. It talks to a small server on the PC, which moves the mouse and types through Windows itself, so it works in every app.',
+          'One-click speaker switching. A button on the home screen swaps between the soundbar and an Echo Studio, and the lit icon shows which one is playing. No digging through sound settings.',
+          'Ad blockers. Every streaming app runs with ad and sponsor blocking built in. Sketchier free streaming sites get their own locked-down browser that closes pop-up ads the moment they open and never sees my other logins.',
+        ],
+        shot: {
+          src: '/projects/hometv-remote.jpg',
+          alt: 'The phone remote with its touchpad, and the background photos screen',
+          caption: 'The phone remote: a touchpad with volume, Back and Home, and the screen for adding background photos.',
+        },
+      },
+    ],
+    outcomeLabel: 'Result',
+    outcome: 'HomeTV is an ongoing project with frequent updates. The true test is getting my roommates to prefer it over the TV’s own OS, and I haven’t done that yet. The biggest hurdle is still convenience: I need a way to turn the TV on and open the remote that’s at least as easy as grabbing the TV’s own remote. More to come :)',
     next: { title: 'Integral', slug: 'integral' },
   },
 }
